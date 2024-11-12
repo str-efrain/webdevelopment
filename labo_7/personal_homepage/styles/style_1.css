@@ -11,9 +11,19 @@ h1 {
 }
 h2 {
     margin-top: 30px;
-    font-size: 20px;
-    text-align: center;
+    font-size: 30px;
 }
 img {
     border: 5px solid saddlebrown;
+}
+.credentials dt {
+    font-style: italic;
+}
+a:hover {
+    text-underline: saddlebrown;
+    text-underline-style: dotted;
+}
+a {
+
+    text-decoration: none;
 }
