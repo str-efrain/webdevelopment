@@ -1,0 +1,39 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 80%;
+    margin: auto;
+    background-color: teal;
+}
+nav {
+    background-color: silver;
+    padding: 10px;
+}
+header {
+    text-align: center;
+}
+a:visited {
+    color: teal;
+}
+a {
+    text-decoration: none;
+    color: teal;
+}
+a:hover {
+    text-decoration: underline 2px solid teal;
+}
+li {
+    margin-top: 10px;
+    padding-bottom: 10px;
+    list-style-type: square;
+}
+.hoofdlijst {
+    list-style-type: none;
+}
+h1 {
+    color: antiquewhite;
+}
+.labo_lijst {
+    border-bottom: 5px solid teal;
+    list-style-type: square;
+    display: inline-grid;
+}
