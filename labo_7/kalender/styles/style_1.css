@@ -34,3 +34,7 @@ td.andere_maand {
 .dagen th {
     border: 1px dotted rgb(255, 220, 220);
 }
+.event {
+    color:  blue;
+    text-decoration: underline;
+}
