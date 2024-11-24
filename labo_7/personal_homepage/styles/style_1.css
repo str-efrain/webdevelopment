@@ -1,8 +1,10 @@
-body {
+div{
     width: 70%;
     margin: auto;
-    background-color: antiquewhite;
+}
+body {
     font-family: "Trebuchet MS", Helvetica, sans-serif;
+    background-color: antiquewhite;
 }
 h1 {
     text-align: center;
@@ -34,4 +36,12 @@ a {
 a:visited {
     color: teal;
     text-decoration: underline solid teal;
+}
+a.home_button {
+    float: left;
+    position: fixed;
+
+    background-color: goldenrod;
+    padding: 10px;
+    margin-left: 10px;
 }

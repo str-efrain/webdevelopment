@@ -33,7 +33,9 @@ h1 {
     color: antiquewhite;
 }
 .labo_lijst {
-    border-bottom: 5px solid teal;
     list-style-type: square;
     display: inline-grid;
+}
+div {
+    border-bottom: 5px solid teal;
 }
