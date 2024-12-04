@@ -80,7 +80,7 @@ main {
     background-color: white;
     margin-top: 20px;
     margin-left: 20px;
-    border: 1px dotted white;
+    border: 1px dotted #999999;
     box-sizing: content-box;
 }
 .gallery {
