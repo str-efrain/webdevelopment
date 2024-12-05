@@ -5,25 +5,48 @@ body {
 }
 .header {
     background-color: #86C3DB;
-    color: white;
     padding-bottom: 30px;
 }
 h1 {
     font-size: 50px;
+    color: orange;
+}
+.header p {
+    color: white;
+    font-size: 30px;
 }
 .logo {
     max-width: 300px;
     margin: 0 auto;
 }
-.intro h2 {
-    font-weight: bold;
-    font-style: italic;
-    font-size: 20px;
+main {
+    background-color: #efefef;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
-.intro h3 {
+h2 {
     font-weight: bold;
-    font-style: italic;
+    font-size: 30px;
+    color: orange;
 }
-.intro p {
+h3 {
+    font-weight: bold;
+    color: orange;
+}
+p {
     margin-top: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
+.team img {
+    height: 125px;
+    max-width: 100px;
+    border: 2px solid black;
+}
+.nadruk {
+    text-decoration: underline;
+}
+.prijslijst img {
+    max-width: 150px;
+}
+
