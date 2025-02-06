@@ -1,0 +1,24 @@
+.content a::before {
+    content: "\1F517";
+    display: inline-block;
+    margin-right: 5px;
+}
+.background a {
+    padding-left: 25px;
+    position: relative;
+}
+.background a::before {
+    content:"";
+    background-image: url('https://cdn-icons-png.flaticon.com/128/167/167707.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    padding-left: 20px;
+    text-decoration: none;
+}
+

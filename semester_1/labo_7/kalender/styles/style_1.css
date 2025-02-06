@@ -1,0 +1,40 @@
+td:first-child, td:last-child {
+    background-color: rgb(255, 220, 220);
+}
+.vrije_dag {
+    background-color: rgb(250,120,120);
+}
+table {
+    width: 30%;
+    margin: auto;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+td {
+    border: 1px dotted black;
+    border-collapse: collapse;
+}
+.maand {
+    background-color: rgb(170,170,200);
+}
+.dagen {
+    background-color: rgb(35,37,70);
+    color: rgb(200,190,240);
+}
+h1 {
+    text-align: center;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+td.andere_maand {
+    background-color: lightgray;
+    color: gray;
+}
+.dagen th {
+    border: 1px dotted rgb(255, 220, 220);
+}
+.event {
+    color:  blue;
+    text-decoration: underline;
+}

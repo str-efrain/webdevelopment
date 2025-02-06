@@ -1,0 +1,153 @@
+/** Volgende CSS gaan we ze geven **/
+.respimg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+html {
+    margin: 0;
+}
+body {
+    font-family: helvetica, sans-serif;
+}
+h1 {
+    font-size: 2.5em;
+    text-transform: uppercase;
+    border-bottom: 2px solid black;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+}
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+header img {
+    height: 50px;
+}
+#hoofd_header {
+    width: 600px;
+    margin: auto;
+}
+.headerline {
+    border-bottom: 1px solid #ebe8e8;
+    width: 100%;
+}
+nav {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    grid-template-rows: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 600px;
+}
+
+nav a {
+    text-decoration: none;
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    text-transform: uppercase;
+    color: #5b4746;
+    font-size: 13px;
+    border-right: 1px solid #ebe8e8;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+nav a:last-child {
+    border-right: none;
+}
+#banner {
+    width: 100%;
+    height: 500px;
+    text-align: center;
+    background: url("../images/headerimage.jpg");
+    color: white;
+    font-size: 40px;
+    background-size: 100% 1200px;
+    padding-top: 230px;
+    text-shadow: 2px 2px #8D99AE;
+}
+main > section {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+main > section > section {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    width: 100%;
+}
+article {
+    margin-right: 1.5em;
+    padding-top: 1em;
+    border-top: 1px solid #ddd;
+}
+article a {
+    text-decoration: none;
+    color: black;
+}
+article p {
+    line-height: 2;
+    color: #666;
+}
+.timestamp {
+    color: #666;
+    line-height: 2;
+    padding-left: 10px;
+}
+.auteur {
+    padding-right: 10px;
+    font-style: italic;
+    border-right: 1px solid #ebe8e8;
+}
+.kicker {
+    text-transform: uppercase;
+    font-size: 1.2em;
+    text-space: 1px;
+    color: #ff4d56;
+}
+aside {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+}
+.row div {
+    padding-bottom: 25px;
+}
+#left {
+    text-align: right;
+}
+#right {
+    color: white;
+    background-color: black;
+}
+#right, #left {
+    float: left;
+    width: 50%;
+    box-sizing: border-box;
+    padding: 10px;
+    line-height: 2em;
+}
+footer {
+    width: 100%;
+    border-top: 1px solid #ebe8e8;
+}
+@media screen and (min-width: 770px) {
+    #hoofd_header, nav, main > section, aside {
+        width: 750px;
+    }
+}
+@media screen and (min-width: 800px) {
+    #banner {
+        font-size: 5em;
+    }
+}
+@media screen and (min-width: 1000px) {
+    #hoofd_header, nav, main > section, aside {
+        width: 980px;
+    }
+}

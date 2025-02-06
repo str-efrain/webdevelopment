@@ -1,0 +1,18 @@
+main {
+    width: 100%;
+    margin: auto;
+}
+
+div {
+    display: table;
+    width: 100%;
+    border-spacing: 10px;
+}
+
+section {
+    display: table-cell;
+    width: 50%;
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+}
