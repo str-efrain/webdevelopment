@@ -33,7 +33,7 @@ const aftrekken = () => {
 	let g2=parseInt(txtRechts.value, 10);
 	let resultaat = g1-g2;
 
-	let resultaatTekst=g1+" -  "+g2+" = "+resultaat;
+	let resultaatTekst=g1+" - "+g2+" = "+resultaat;
 	txtOutput.innerHTML=resultaatTekst;
 }
 
