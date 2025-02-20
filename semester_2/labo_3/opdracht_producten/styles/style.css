@@ -1,0 +1,15 @@
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+tr:nth-child(even), tfoot {
+    background-color: lightgray;
+}
+thead {
+    background-color: red;
+    color: white;
+}
