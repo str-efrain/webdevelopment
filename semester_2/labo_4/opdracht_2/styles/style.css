@@ -1,0 +1,11 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 20px;
+}
+dt {
+    font-weight: bold;
+}
+dd {
+    color: blue;
+    margin-bottom: 10px;
+}
