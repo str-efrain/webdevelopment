@@ -49,7 +49,7 @@ const deleteColor = (event) => {
 	event.target.remove();
 }
 const loadColor = (event) => {
-	let color = event.target;
+	let color = event.currentTarget;
 	let sliders = document.getElementsByClassName("slider");
 	sliders[0].value = color.getAttribute("data-r");
 	sliders[1].value = color.getAttribute("data-g");
