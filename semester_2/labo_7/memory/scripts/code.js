@@ -7,29 +7,29 @@ const global = {
     AANTAL_KAARTEN: 6,
     lastcard: null,
     currentcard: null,
-    timeId: 0,
-};
+    isBusy: false,
+    foundPairs: 0
+}
 const setup = () => {
     displayAchterkanten();
     styleCards();
 }
 const styleCards = () => {
     let speelveld = document.querySelector("#speelveld");
-    let rows = "";
-    let columns = "";
-    for (let i = 0; i < global.AANTAL_VERTICAAL; i++) {
-        rows += "auto ";
-    }
-    for (let i = 0; i < global.AANTAL_HORIZONTAAL; i++) {
-        columns += "auto ";
-    }
-    speelveld.style.gridTemplateRows = rows;
-    speelveld.style.gridTemplateColumns = columns;
+    speelveld.style.gridTemplateRows = `repeat(${global.AANTAL_VERTICAAL}, auto)`;
+    speelveld.style.gridTemplateColumns = `repeat(${global.AANTAL_HORIZONTAAL}, auto)`;
 }
 const displayAchterkanten = () => {
     let speelveld = document.querySelector("#speelveld");
     let containers = [];
-    for (let i = 0; i < global.AANTAL_KAARTEN * 2; i++) {
+    let kaarten = [];
+
+    for (let i = 0; i < global.AANTAL_KAARTEN; i++) {
+        kaarten.push(i, i);
+    }
+    shuffle(kaarten);
+
+    for (let i = 0; i < kaarten.length; i++) {
         let cardContainer = document.createElement("div");
         cardContainer.classList.add("card-container");
 
@@ -39,51 +39,84 @@ const displayAchterkanten = () => {
 
         let voorkant = document.createElement("img");
         voorkant.classList.add("card", "voorkant");
-        voorkant.setAttribute("src", global.KAARTPREFIX + (i % global.AANTAL_KAARTEN) + global.KAARTSUFFIX);
+        voorkant.setAttribute("src", global.KAARTPREFIX + kaarten[i] + global.KAARTSUFFIX);
         voorkant.style.display = "none";
 
         cardContainer.appendChild(achterkant);
         cardContainer.appendChild(voorkant);
-        cardContainer.addEventListener("click", turnCard);
+        cardContainer.addEventListener("click", playTurn);
 
         containers.push(cardContainer);
     }
-    //shuffle(containers);
-    for (let i = 0; i < global.AANTAL_KAARTEN * 2; i++) {
-        speelveld.append(containers[i]);
-    }
-};
-const turnCard = (event) => {
+
+    containers.forEach(container => speelveld.append(container));
+}
+const playTurn = (event) => {
+    if (global.isBusy) return;
+
     let cardContainer = event.currentTarget;
+    let gedraaideKaart = turnCard(cardContainer);
+    if (!gedraaideKaart) return;
+
+    if (!global.lastcard) {
+        global.lastcard = gedraaideKaart;
+    } else {
+        global.isBusy = true;
+        setCursorZandloper(true);
+        global.currentcard = gedraaideKaart;
+
+        if (global.lastcard.getAttribute("src") === global.currentcard.getAttribute("src")) {
+            setTimeout(matched, 1000);
+        } else {
+            setTimeout(() => {
+                turnCard(global.lastcard.parentElement, true);
+                turnCard(global.currentcard.parentElement, true);
+                global.lastcard = null;
+                global.currentcard = null;
+                global.isBusy = false;
+                setCursorZandloper(false);
+            }, 1000);
+        }
+    }
+}
+const matched = () => {
+    global.lastcard.parentElement.remove();
+    global.currentcard.parentElement.remove();
+
+    global.foundPairs++;
+    if (global.foundPairs === global.AANTAL_KAARTEN) {
+        alert("BOOM SHAKALAKA");
+    }
+
+    global.lastcard = null;
+    global.currentcard = null;
+    global.isBusy = false;
+    setCursorZandloper(false);
+}
+const setCursorZandloper = (isBusy) => {
+    let speelveld = document.querySelector("#speelveld");
+    speelveld.style.cursor = isBusy ? "wait" : "default";
+};
+
+const turnCard = (cardContainer, hide = false) => {
     let achterkant = cardContainer.querySelector(".achterkant");
     let voorkant = cardContainer.querySelector(".voorkant");
 
-    if (achterkant.style.display !== "none") {
-        achterkant.style.display = "none";
-        voorkant.style.display = "block";
-    } else {
+    if (!hide && achterkant.style.display === "none") return null;
+
+    if (hide) {
         achterkant.style.display = "block";
         voorkant.style.display = "none";
-    }
-    if (global.lastcard === null) {
-        global.lastcard = voorkant;
     } else {
-        if (global.lastcard.getAttribute("src") === voorkant.getAttribute("src")) {
-            global.currentcard = voorkant;
-            global.timeID = setTimeout(showMatchedCards, 2000);
-        }
+        achterkant.style.display = "none";
+        voorkant.style.display = "block";
     }
-};
-const showMatchedCards = () => {
-    console.log(global.lastcard);
-    console.log(global.currentcard);
+    return voorkant;
 }
 const shuffle = (array) => {
-    let currentIndex = array.length;
-    while (currentIndex !== 0) {
-        let randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
-        [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
     }
 }
 window.addEventListener("load", setup);
