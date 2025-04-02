@@ -40,7 +40,7 @@ const displayAchterkanten = () => {
         let voorkant = document.createElement("img");
         voorkant.classList.add("card", "voorkant");
         voorkant.setAttribute("src", global.KAARTPREFIX + kaarten[i] + global.KAARTSUFFIX);
-        voorkant.style.display = "none";
+        voorkant.style.visibility = "hidden";
 
         cardContainer.appendChild(achterkant);
         cardContainer.appendChild(voorkant);
@@ -80,8 +80,8 @@ const playTurn = (event) => {
     }
 }
 const matched = () => {
-    global.lastcard.parentElement.remove();
-    global.currentcard.parentElement.remove();
+    global.lastcard.style.visibility = "hidden";
+    global.currentcard.style.visibility = "hidden";
 
     global.foundPairs++;
     if (global.foundPairs === global.AANTAL_KAARTEN) {
@@ -102,14 +102,14 @@ const turnCard = (cardContainer, hide = false) => {
     let achterkant = cardContainer.querySelector(".achterkant");
     let voorkant = cardContainer.querySelector(".voorkant");
 
-    if (!hide && achterkant.style.display === "none") return null;
+    if (!hide && achterkant.style.visibility === "hidden") return null;
 
     if (hide) {
-        achterkant.style.display = "block";
-        voorkant.style.display = "none";
+        achterkant.style.visibility = "visible";
+        voorkant.style.visibility = "hidden";
     } else {
-        achterkant.style.display = "none";
-        voorkant.style.display = "block";
+        achterkant.style.visibility = "hidden";
+        voorkant.style.visibility = "visible";
     }
     return voorkant;
 }
