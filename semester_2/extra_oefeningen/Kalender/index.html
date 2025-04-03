@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Mijn kalender</title>
+</head>
+<body>
+<div id="loginContainer">
+    <h2>Welkom op mijn oefenpagina!</h2>
+    <div class="inputLine">
+        <label for="naam">Naam:</label>
+        <input type="text" id="naam" placeholder="Bert" autofocus="autofocus">
+        <span id="errorOutput"></span>
+        <input type="button" id="goToPageBtn" value="Ga verder">
+    </div>
+</div>
+<div id="banner" class="disappearForLogin">
+    <header>
+        <h1 id="welkomBericht"></h1>
+    </header>
+</div>
+<div class="container disappearForLogin" id="kalenderContainer">
+        <div class="kalender">
+            <div class="left">
+                <p id="dagVoluit"></p>
+                <p id="dag"></p>
+            </div>
+            <div class="right">
+                <p id="maand"></p>
+                <p id="jaar"></p>
+            </div>
+        </div>
+        <div class="klok">
+            <span id="tijd"></span>
+        </div>
+</div>
+<script src="scripts/code.js"></script>
+</body>
+</html>
