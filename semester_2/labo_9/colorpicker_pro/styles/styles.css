@@ -1,0 +1,45 @@
+.colorDemo {
+	width:150px;
+	height:150px;
+	border:1px solid black;
+}
+section {
+	border: 5px solid gray;
+	width: 35%;
+	margin-left: 25px;
+}
+#mainContainer {
+	display: grid;
+	grid-template-columns: 3fr 1fr 1fr;
+	grid-template-rows: auto;
+	gap: 20px;
+	padding: 20px;
+}
+.newColors {
+	float: left;
+	margin: 5px;
+	border: 2px solid gray;
+	width: 100px;
+	height: 100px;
+}
+#save {
+	float: right;
+	margin-top: 80px;
+}
+#subContainer {
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-rows: auto auto auto;
+}
+.block {
+	text-align: center;
+}
+p {
+	display: inline;
+}
+#savedColors {
+	margin-left: 20px;
+}
+.deleteButton {
+	float: right;
+}

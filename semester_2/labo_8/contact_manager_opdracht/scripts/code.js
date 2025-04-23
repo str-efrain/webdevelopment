@@ -65,7 +65,6 @@ const updateList = () => {
             let newPerson = document.createElement("option");
             newPerson.textContent = personen[i].voornaam + " " + personen[i].familienaam;
             newPerson.setAttribute("value", i + "contact");
-            newPerson.addEventListener("click", loadPerson);
             lstPersonen.append(newPerson);
     }
 };
@@ -97,8 +96,11 @@ const bewerkNieuwePersoon = () => {
 const setup = () => {
     let btnBewaar = document.getElementById("btnBewaar");
     let btnNieuw = document.getElementById("btnNieuw");
+    let lstPersonen = document.getElementById("lstPersonen");
+    lstPersonen.addEventListener("change", loadPerson);
     btnBewaar.addEventListener("click", bewaarBewerktePersoon);
     btnNieuw.addEventListener("click", bewerkNieuwePersoon);
+
     updateList();
 };
 window.addEventListener("load", setup);
