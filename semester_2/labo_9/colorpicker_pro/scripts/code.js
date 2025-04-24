@@ -12,31 +12,39 @@ const  setup = () => {
 }
 
 const loadSavedSliders = () => {
-	let sliders = document.getElementsByClassName("slider");
-	let savedSlider = JSON.parse(localStorage.getItem("savedSlider"));
 	let colorDiv = document.querySelector("#savedColors");
-	sliders[0].value = savedSlider.r;
-	sliders[1].value = savedSlider.g;
-	sliders[2].value = savedSlider.b;
-	let savedColors = JSON.parse(localStorage.getItem("savedColors"));
-	for (let i= 0; i < savedColors.length; i++){
-		let r = savedColors[i].r;
-		let g = savedColors[i].g;
-		let b = savedColors[i].b;
-		let newColor = document.createElement("div");
-		newColor.style.backgroundColor="rgb("+r+", "+g+", "+b+")";
-		newColor.setAttribute("data-r", r);
-		newColor.setAttribute("data-g", g);
-		newColor.setAttribute("data-b", b);
-		newColor.classList.add("newColors");
-		colorDiv.appendChild(newColor);
-		let deleteBtn = document.createElement("input");
-		deleteBtn.classList.add("deleteButton");
-		deleteBtn.setAttribute("type", "button");
-		deleteBtn.setAttribute("value", "X");
-		newColor.appendChild(deleteBtn);
-		deleteBtn.addEventListener("click", deleteColor);
-		newColor.addEventListener("click", loadColor);
+	let sliders = document.getElementsByClassName("slider");
+	if (localStorage.length > 0) {
+		let savedSlider = JSON.parse(localStorage.getItem("savedSlider"));
+		sliders[0].value = savedSlider.r;
+		sliders[1].value = savedSlider.g;
+		sliders[2].value = savedSlider.b;
+
+		let savedColors = JSON.parse(localStorage.getItem("savedColors"));
+		for (let i= 0; i < savedColors.length; i++){
+			let r = savedColors[i].r;
+			let g = savedColors[i].g;
+			let b = savedColors[i].b;
+			let newColor = document.createElement("div");
+			newColor.style.backgroundColor="rgb("+r+", "+g+", "+b+")";
+			newColor.setAttribute("data-r", r);
+			newColor.setAttribute("data-g", g);
+			newColor.setAttribute("data-b", b);
+			newColor.classList.add("newColors");
+			colorDiv.appendChild(newColor);
+			let deleteBtn = document.createElement("input");
+			deleteBtn.classList.add("deleteButton");
+			deleteBtn.setAttribute("type", "button");
+			deleteBtn.setAttribute("value", "X");
+			newColor.appendChild(deleteBtn);
+			deleteBtn.addEventListener("click", deleteColor);
+			newColor.addEventListener("click", loadColor);
+		}
+	} else {
+		//sliders[0].value = 128;
+		//sliders[1].value = 256;
+		//sliders[2].value = 128;
+		update();
 	}
 }
 
