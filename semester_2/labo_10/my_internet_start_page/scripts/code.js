@@ -60,14 +60,16 @@ const loadSite = (event) => {
 const saveToLocalstorage = () => {
     let tabs = document.querySelectorAll(".tab");
     let storageArray = [];
-    for (let i = 0; i < tabs.length; i++) {
-        let indexCommand = tabs[i].getAttribute("data-indexCommand");
-        let search = tabs[i].getAttribute("data-search");
-        let query = tabs[i].getAttribute("data-query");
-        let savedTab = {indexCommand: indexCommand, search: search, query: query};
-        storageArray.push(savedTab);
+    if (tabs !== null) {
+        for (let i = 0; i < tabs.length; i++) {
+            let indexCommand = tabs[i].getAttribute("data-indexCommand");
+            let search = tabs[i].getAttribute("data-search");
+            let query = tabs[i].getAttribute("data-query");
+            let savedTab = {indexCommand: indexCommand, search: search, query: query};
+            storageArray.push(savedTab);
+        }
+        localStorage.setItem("tabs", JSON.stringify(storageArray));
     }
-    localStorage.setItem("tabs", JSON.stringify(storageArray));
 }
 const loadFromLocalstorage = () => {
     let savedTabs = JSON.parse(localStorage.getItem("tabs"));
