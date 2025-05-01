@@ -73,8 +73,10 @@ const saveToLocalstorage = () => {
 }
 const loadFromLocalstorage = () => {
     let savedTabs = JSON.parse(localStorage.getItem("tabs"));
-    for (let i = 0; i < savedTabs.length; i++) {
-        save(savedTabs[i].indexCommand, savedTabs[i].search, savedTabs[i].query);
+    if (savedTabs !== null) {
+        for (let i = 0; i < savedTabs.length; i++) {
+            save(savedTabs[i].indexCommand, savedTabs[i].search, savedTabs[i].query);
+        }
     }
 }
 window.addEventListener("load", setup);
