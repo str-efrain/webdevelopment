@@ -17,7 +17,7 @@ main {
     background-color: rgb(230,33,33);
     color: white;
 }
-.y > input {
+.y > .goTabButton {
     background-color: black;
     color: white;
     border: none;
@@ -27,7 +27,7 @@ main {
     background-color: purple;
     color: white;
 }
-.i > input {
+.i > .goTabButton {
     color: white;
     background-color: orange;
     border: none;
@@ -37,7 +37,7 @@ main {
     background-color: cadetblue;
     color: white;
 }
-.g > input {
+.g > .goTabButton {
     color: white;
     background-color: orange;
     border: none;
@@ -47,7 +47,7 @@ main {
     background-color: deepskyblue;
     color: white;
 }
-.x > input {
+.x > .goTabButton {
     color: white;
     background-color: black;
     border: none;
@@ -56,4 +56,10 @@ main {
 .tab {
     padding: 10px;
     border-radius: 10px;
+}
+.deleteButton {
+    border-radius: 5px;
+    border: none;
+    color: red;
+    float: right;
 }

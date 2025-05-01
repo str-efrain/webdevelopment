@@ -49,6 +49,12 @@ const save = (indexCommand, search, query) => {
     input.setAttribute("data-url", query);
     input.addEventListener("click", loadSite);
     site.appendChild(input);
+    let deleteBtn = document.createElement("input");
+    deleteBtn.type = "button";
+    deleteBtn.value = "Delete";
+    deleteBtn.addEventListener("click", deleteTab);
+    deleteBtn.classList.add("deleteButton");
+    site.appendChild(deleteBtn);
     newTab.appendChild(site);
     let tabs = document.querySelector("#tabs");
     tabs.appendChild(newTab);
@@ -57,19 +63,25 @@ const loadSite = (event) => {
     let url = event.currentTarget.getAttribute("data-url");
     window.open(url, "_blank");
 }
+const deleteTab = (event) => {
+    event.target.parentElement.parentElement.remove();
+    event.target.parentElement.remove();
+    event.target.remove();
+    event.stopPropagation();
+    saveToLocalstorage();
+}
 const saveToLocalstorage = () => {
     let tabs = document.querySelectorAll(".tab");
     let storageArray = [];
-    if (tabs !== null) {
-        for (let i = 0; i < tabs.length; i++) {
-            let indexCommand = tabs[i].getAttribute("data-indexCommand");
-            let search = tabs[i].getAttribute("data-search");
-            let query = tabs[i].getAttribute("data-query");
-            let savedTab = {indexCommand: indexCommand, search: search, query: query};
-            storageArray.push(savedTab);
-        }
-        localStorage.setItem("tabs", JSON.stringify(storageArray));
+    for (let i = 0; i < tabs.length; i++) {
+        let indexCommand = tabs[i].getAttribute("data-indexCommand");
+        let search = tabs[i].getAttribute("data-search");
+        let query = tabs[i].getAttribute("data-query");
+        let savedTab = {indexCommand: indexCommand, search: search, query: query};
+        storageArray.push(savedTab);
     }
+    localStorage.setItem("tabs", JSON.stringify(storageArray));
+
 }
 const loadFromLocalstorage = () => {
     let savedTabs = JSON.parse(localStorage.getItem("tabs"));
