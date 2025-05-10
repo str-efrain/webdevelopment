@@ -41,9 +41,6 @@ const loadSavedSliders = () => {
 			newColor.addEventListener("click", loadColor);
 		}
 	} else {
-		//sliders[0].value = 128;
-		//sliders[1].value = 256;
-		//sliders[2].value = 128;
 		update();
 	}
 }

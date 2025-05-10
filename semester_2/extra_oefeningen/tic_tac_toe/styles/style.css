@@ -1,0 +1,24 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+#main_container {
+    height: 300px;
+    width: 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 30px;
+}
+.hokje {
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+    border: 3px solid;
+}
+img {
+    height: 80px;
+    padding: 10px;
+}
