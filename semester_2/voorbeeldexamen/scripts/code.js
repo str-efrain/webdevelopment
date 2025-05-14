@@ -67,13 +67,22 @@ const setup = () => {
     startBtn.addEventListener("click", startQuiz);
     let opslaanBtn = document.querySelector(".col-10 .btn-success");
     opslaanBtn.addEventListener("click", slaOp);
+    let indienBtn = document.querySelector("#submit");
+    indienBtn.addEventListener("click", submit);
+    let resetBtn = document.querySelector("#reset");
+    resetBtn.addEventListener("click", resetHighscores);
 }
 const startQuiz = () => {
     let startDiv = document.querySelector("body > section > div:nth-child(2)");
     startDiv.classList.toggle("d-none");
     let quiz = document.getElementById("quiz");
     quiz.classList.toggle("d-none");
+    setGestartOp();
     loadQuestions();
+}
+const setGestartOp = () => {
+    let started = document.querySelector("#started");
+    started.innerText = new Date().toLocaleTimeString();
 }
 const loadQuestions = () => {
     let questionList = document.querySelector("#questions");
@@ -150,5 +159,48 @@ const valideerAntwoord = (vraag) => {
         questionList[vraag].classList.remove("bg-info");
         questionList[vraag].classList.add("bg-danger");
     }
+}
+const submit = () => {
+    let questionList = document.querySelector("#questions").children;
+    let correctQuestions = 0;
+    for (let i = 0; i < questionList.length; i++) {
+        if (questionList[i].classList.contains("bg-success")) {
+            correctQuestions += 1;
+        }
+    }
+    let newScore = document.createElement("li");
+    newScore.innerText = "" + correctQuestions;
+    let highscoreList = document.getElementById("highscoreList");
+    highscoreList.appendChild(newScore);
+
+    let listItems = highscoreList.getElementsByTagName("li");
+    let scores = [];
+
+    for (let i = 0; i < listItems.length; i++) {
+        scores.push(parseInt(listItems[i].innerText));
+    }
+
+    scores.sort(function(a, b) {
+        return b - a;
+    });
+
+    resetHighscores();
+    for (let i = 0; i < scores.length; i++) {
+        let li = document.createElement("li");
+        li.innerText = scores[i];
+        highscoreList.appendChild(li);
+    }
+
+    let startDiv = document.querySelector("body > section > div:nth-child(2)");
+    startDiv.classList.toggle("d-none");
+    let quiz = document.getElementById("quiz");
+    quiz.classList.toggle("d-none");
+    let questions = document.querySelector("#questions");
+    questions.innerHTML = "";
+
+}
+const resetHighscores = () => {
+    let highscoreList = document.getElementById("highscoreList");
+    highscoreList.innerHTML = "";
 }
 window.addEventListener('load', setup);
