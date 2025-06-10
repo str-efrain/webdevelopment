@@ -6,7 +6,7 @@ const setup = () => {
 const goToSite = () => {
     let commandWordArray = ["g", "i", "x", "y"];
     let commandWords = {g: "https://www.google.com/search?q=", i: "https://www.instagram.com/explore/tags/", x: "https://x.com/hashtag/", y: "https://www.youtube.com/results?search_query="};
-    let value = document.querySelector("#zoekopdracht").value
+    let value = document.querySelector("#zoekopdracht").value;
     let zoekopdracht = value.split("");
     if (value.indexOf("/help") >= 0) {
         window.alert("Geldige commando's zijn: \n* /g --> Google\n* /y --> Youtube\n* /i --> Instagram\n* /x --> X");
@@ -30,32 +30,39 @@ const save = (indexCommand, search, query) => {
     let newTab = document.createElement("div");
     newTab.classList.add("col-4");
     newTab.classList.add("p-1");
-    let site = document.createElement("div")
+
+    let site = document.createElement("div");
     site.classList.add("tab");
     site.classList.add(indexCommand);
     site.setAttribute("data-indexCommand", indexCommand);
     site.setAttribute("data-search", search);
     site.setAttribute("data-query", query);
+
     let siteNames = {g: "Google", y: "Youtube", i: "Instagram", x: "X"};
     let siteName =  document.createElement("h3");
     siteName.textContent = siteNames[indexCommand];
     site.appendChild(siteName);
+
     let searchText = document.createElement("p");
     searchText.textContent = search;
     site.appendChild(searchText);
+
     let input = document.createElement("input");
     input.type = "button";
     input.value = "GO!";
     input.setAttribute("data-url", query);
     input.addEventListener("click", loadSite);
     site.appendChild(input);
+
     let deleteBtn = document.createElement("input");
     deleteBtn.type = "button";
     deleteBtn.value = "Delete";
     deleteBtn.addEventListener("click", deleteTab);
     deleteBtn.classList.add("deleteButton");
     site.appendChild(deleteBtn);
+
     newTab.appendChild(site);
+
     let tabs = document.querySelector("#tabs");
     tabs.appendChild(newTab);
 }
